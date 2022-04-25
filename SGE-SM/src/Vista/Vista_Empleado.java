@@ -46,7 +46,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtbl_persona);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 186));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 410, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
