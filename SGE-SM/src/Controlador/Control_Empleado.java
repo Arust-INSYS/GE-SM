@@ -85,7 +85,7 @@ public class Control_Empleado {
             
         });
     }
-    
+//    private String id_discapacidad;
     private void seleccion_combo(){
         String discapacidad = (String) vista.getCbxDiscapacidad().getSelectedItem();
         
@@ -95,7 +95,9 @@ public class Control_Empleado {
             vista.getTxtDiscapacidad().setText(id_sr);
             
         });
+//        id_discapacidad=discapacidad;
         System.out.println(discapacidad);
+//        return id_discapacidad;
     }
     
     ///HORARIO
@@ -161,7 +163,7 @@ public class Control_Empleado {
 //            java.sql.Date fecha = java.sql.Date.valueOf(zdt.toLocalDate());
             double salario = Double.parseDouble(vista.getTxtSalario().getText());
             String horario = vista.getTxtHorario().getText();
-            String discapacidad = vista.getTxtDiscapacidad().getText().toUpperCase();
+            String discapacidad = vista.getTxtDiscapacidad().getText();
                       
             
             Modelo_Empleado emp = new Modelo_Empleado();
@@ -170,10 +172,11 @@ public class Control_Empleado {
             emp.setApellido(apellido);            
             emp.setSalario(salario);
             emp.setHorario(horario);
+            System.out.println("Carga");
             emp.setDiscapacidad(discapacidad);
-            
+            System.out.println("Si cargó");
             if(emp.crearEmpleado()){
-                JOptionPane.showMessageDialog(vista,"Empleado Creada Correctamente");
+                JOptionPane.showMessageDialog(vista,"Empleado Creado Correctamente");
             }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");

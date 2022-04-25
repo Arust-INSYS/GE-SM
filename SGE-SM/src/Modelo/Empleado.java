@@ -19,24 +19,26 @@ public class Empleado {
     private String nombre;
     private String apellido;
     private Date fecha_contrato;
-    private double salario;
-    private String discapacidad;
+    private double salario;  
     private String horario;
+    private String discapacidad;
     
 
     public Empleado() {
     }
 
-    public Empleado(int id_empleado, String cedula, String nombre, String apellido, Date fecha_contrato, double salario, String discapacidad, String horario) {
+    public Empleado(int id_empleado, String cedula, String nombre, String apellido, Date fecha_contrato, double salario, String horario, String discapacidad) {
         this.id_empleado = id_empleado;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_contrato = fecha_contrato;
         this.salario = salario;
-        this.discapacidad = discapacidad;
         this.horario = horario;
+        this.discapacidad = discapacidad;
     }
+
+    
 
     
 
@@ -88,20 +90,19 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public String getDiscapacidad() {
-        return discapacidad;
-    }
-
-    public void setDiscapacidad(String discapacidad) {
-        this.discapacidad = discapacidad;
-    }
-
     public String getHorario() {
         return horario;
     }
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+    public String getDiscapacidad() {
+        return discapacidad;
+    }
+
+    public void setDiscapacidad(String discapacidad) {
+        this.discapacidad = discapacidad;
     }
     
     

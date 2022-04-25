@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,9 +25,11 @@ public class Modelo_Empleado extends Empleado{
     public Modelo_Empleado() {
     }
 
-    public Modelo_Empleado(int id_empleado, String cedula, String nombre, String apellido, java.sql.Date fecha_contrato, double salario, String discapacidad, String horario) {
-        super(id_empleado, cedula, nombre, apellido, fecha_contrato, salario, discapacidad, horario);
+    public Modelo_Empleado(int id_empleado, String cedula, String nombre, String apellido, java.sql.Date fecha_contrato, double salario, String horario, String discapacidad) {
+        super(id_empleado, cedula, nombre, apellido, fecha_contrato, salario, horario, discapacidad);
     }
+
+    
 
     
 
@@ -56,13 +59,26 @@ public class Modelo_Empleado extends Empleado{
             return null;
         }
     }
-    public boolean crearEmpleado(){
-        String sql;
-        sql = "INSERT INTO empleado (cedula, nombre, apellido, salario, horario, discapacidad)";
-        sql+="VALUES ('"+ getCedula()+"','"+ getNombre() +"','"+ getApellido()+"','"+ getSalario()+"','"+ getHorario()+"','"+ getDiscapacidad()+"')";
-        
-        return cpg.accion(sql);
-    }
+    
+    public boolean crearEmpleado() {
+        try {
+            String sql;
+            sql = "INSERT INTO empleado (cedula, nombre, apellido, salario, horario, discapacidad)";
+            sql += "VALUES(?,?,?)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setString(1, getCedula());
+            ps.setString(2, getNombre());
+            ps.setString(3, getApellido());
+            ps.setDouble(4, getSalario());
+            ps.setString(5, getHorario());
+            ps.setString(6, getDiscapacidad());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    } //en uso
     
     public boolean editarEmpleado(){
          return false;
