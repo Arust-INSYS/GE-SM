@@ -32,6 +32,7 @@ public class Control_Empleado {
     
     public void incioControl(){
         cargar_datos();
+        vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -49,6 +50,28 @@ public class Control_Empleado {
             };
                 tblModel.addRow(filap);
         });
+        
+    }
+    
+    private void abrirDialogo(int ce){
+        String title;
+        vista.getTxtCedula().setText("");
+        vista.getTxtNombre().setText("");
+        vista.getTxtApellido().setText("");
+        if (ce==1){
+            title = "Crear nueva Persona";
+            vista.getDlgEmpleado().setName("Crear");
+        }
+        else{
+            title = "Editar Persona";
+            vista.getDlgEmpleado().setName("Editar");
+        }
+        vista.getDlgEmpleado().setLocationRelativeTo(vista);
+        vista.getDlgEmpleado().setSize(600, 350);
+        vista.getDlgEmpleado().setTitle(title);
+        vista.getDlgEmpleado().setVisible(true);
+        
+        
         
     }
 }

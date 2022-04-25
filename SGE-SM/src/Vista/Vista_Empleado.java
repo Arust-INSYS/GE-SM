@@ -5,7 +5,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -35,16 +39,17 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         cbxDiscaoacidad = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         cbxHorario = new javax.swing.JComboBox<>();
-        txtApellido1 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_persona = new javax.swing.JTable();
+        btnCrear = new javax.swing.JButton();
 
         dlgEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -58,7 +63,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Apellido:");
         dlgEmpleado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
-        dlgEmpleado.getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
+        dlgEmpleado.getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
 
         jLabel12.setText("Salario:");
         dlgEmpleado.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
@@ -74,7 +79,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         cbxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         dlgEmpleado.getContentPane().add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
-        dlgEmpleado.getContentPane().add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, -1));
+        dlgEmpleado.getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, -1));
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
@@ -96,6 +101,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 800, 380));
 
+        btnCrear.setText("Crear");
+        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -107,7 +115,74 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.jtbl_persona = jtbl_persona;
     }
 
+    public JButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(JButton btnCrear) {
+        this.btnCrear = btnCrear;
+    }
+
+    public JComboBox<String> getCbxDiscaoacidad() {
+        return cbxDiscaoacidad;
+    }
+
+    public void setCbxDiscaoacidad(JComboBox<String> cbxDiscaoacidad) {
+        this.cbxDiscaoacidad = cbxDiscaoacidad;
+    }
+
+    public JComboBox<String> getCbxHorario() {
+        return cbxHorario;
+    }
+
+    public void setCbxHorario(JComboBox<String> cbxHorario) {
+        this.cbxHorario = cbxHorario;
+    }
+
+    public JDialog getDlgEmpleado() {
+        return dlgEmpleado;
+    }
+
+    public void setDlgEmpleado(JDialog dlgEmpleado) {
+        this.dlgEmpleado = dlgEmpleado;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtSalario() {
+        return txtSalario;
+    }
+
+    public void setTxtSalario(JTextField txtSalario) {
+        this.txtSalario = txtSalario;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrear;
     private javax.swing.JComboBox<String> cbxDiscaoacidad;
     private javax.swing.JComboBox<String> cbxHorario;
     private javax.swing.JDialog dlgEmpleado;
@@ -121,8 +196,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbl_persona;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtApellido1;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
