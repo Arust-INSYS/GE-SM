@@ -13,6 +13,9 @@ import Vista.Vista_Empleado;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -75,7 +78,7 @@ public class Control_Empleado {
         JComboBox serlist;
         serlist=vista.getCbxDiscapacidad();
         serlist.removeAllItems();
-        List<Discapacidad>listaser= modelo.combobox();
+        List<Discapacidad>listaser= modelo.comboboxD();
 //        Holder<Integer>  i = new Holder<>(1);
         listaser.stream().forEach(lista->{
             String id_dis = lista.getId_discapacidad();
@@ -89,7 +92,7 @@ public class Control_Empleado {
     private void seleccion_combo(){
         String discapacidad = (String) vista.getCbxDiscapacidad().getSelectedItem();
         
-        List<Discapacidad>lista_sr= modelo.selecctionitem(discapacidad);
+        List<Discapacidad>lista_sr= modelo.selecctionD(discapacidad);
         lista_sr.stream().forEach(lista->{
             String id_sr = lista.getId_discapacidad();
             vista.getTxtDiscapacidad().setText(id_sr);
@@ -156,12 +159,25 @@ public class Control_Empleado {
             String cedula=vista.getTxtCedula().getText();
             String nombre=vista.getTxtNombre().getText();
             String apellido=vista.getTxtApellido().getText();
+            System.out.println("Holaaa");
+            double salario=0;
+            try {
+            salario = DecimalFormat.getNumberInstance().parse(vista.getTxtSalario().getText()).doubleValue();
+            System.out.println(salario);
             
+            
+        } catch (ParseException e) {
+            
+        }
+//            double salario = Double.parseDouble(vista.getTxtSalario().getText());
+            System.out.println("Pase");
 //            Instant instant= vista.getDateCh_fechanac().getDate().toInstant();
 //            ZoneId zid= ZoneId.of("America/Guayaquil");
 //            ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);  
 //            java.sql.Date fecha = java.sql.Date.valueOf(zdt.toLocalDate());
-            double salario = Double.parseDouble(vista.getTxtSalario().getText());
+            System.out.println("Holaaa");
+             
+             System.out.println(salario);
             String horario = vista.getTxtHorario().getText();
             String discapacidad = vista.getTxtDiscapacidad().getText();
                       
@@ -172,15 +188,27 @@ public class Control_Empleado {
             emp.setApellido(apellido);            
             emp.setSalario(salario);
             emp.setHorario(horario);
+                      
             System.out.println("Carga");
+            
             emp.setDiscapacidad(discapacidad);
             System.out.println("Si cargó");
-            if(emp.crearEmpleado()){
+            if(cedula.equals("")||nombre.equals("")||apellido.equals("")||
+                    horario.equals("")||discapacidad.equals("")){
+                JOptionPane.showMessageDialog(vista,"Faltan campos, verifique");
+            }else{
+                if(salario==0||salario<450){
+                    JOptionPane.showMessageDialog(vista,"Salario no puede ser cero o menor de 450, verifique");
+                }else{
+                    if(emp.crearEmpleado()){
                 JOptionPane.showMessageDialog(vista,"Empleado Creado Correctamente");
             }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");
-        }
+                 }
+                }
+            }
+            
         }else{ // EDITAR
             
             

@@ -64,7 +64,7 @@ public class Modelo_Empleado extends Empleado{
         try {
             String sql;
             sql = "INSERT INTO empleado (cedula, nombre, apellido, salario, horario, discapacidad)";
-            sql += "VALUES(?,?,?)";
+            sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setString(1, getCedula());
             ps.setString(2, getNombre());
@@ -85,7 +85,7 @@ public class Modelo_Empleado extends Empleado{
         
     }
     
-    public List<Discapacidad> combobox(){ 
+    public List<Discapacidad> comboboxD(){ 
         List<Discapacidad> lista = new ArrayList<Discapacidad>();
         
         try {
@@ -108,7 +108,7 @@ public class Modelo_Empleado extends Empleado{
         
     } //en uso
     
-    public List<Discapacidad> selecctionitem(String id_discp){
+    public List<Discapacidad> selecctionD(String id_discp){
          List<Discapacidad> lista = new ArrayList<Discapacidad>();
         try {
            
