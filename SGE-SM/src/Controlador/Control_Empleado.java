@@ -5,11 +5,22 @@
  */
 package Controlador;
 
+import Modelo.Discapacidad;
 import Modelo.Modelo_Empleado;
 import Modelo.Empleado;
+import Modelo.Horario;
 import Vista.Vista_Empleado;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Date;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +44,12 @@ public class Control_Empleado {
     public void incioControl(){
         cargar_datos();
         vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
+        //Dialogo empleado
+        llenar_comobobox();
+        llenar_comoboboxHR();
+        vista.getBtnAceptar().addActionListener(l->crear_editar_Empleado());
+        vista.getCbxDiscapacidad().addActionListener(l->seleccion_combo());
+        vista.getCbxHorario().addActionListener(l->seleccion_comboHr());
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -53,17 +70,73 @@ public class Control_Empleado {
         
     }
     
+    private void llenar_comobobox(){
+        
+        JComboBox serlist;
+        serlist=vista.getCbxDiscapacidad();
+        serlist.removeAllItems();
+        List<Discapacidad>listaser= modelo.combobox();
+//        Holder<Integer>  i = new Holder<>(1);
+        listaser.stream().forEach(lista->{
+            String id_dis = lista.getId_discapacidad();
+            serlist.addItem(id_dis);
+//            serlist.addItem(i.value+"."+nom_servicios);
+//        i.value++;
+            
+        });
+    }
+    
+    private void seleccion_combo(){
+        String discapacidad = (String) vista.getCbxDiscapacidad().getSelectedItem();
+        
+        List<Discapacidad>lista_sr= modelo.selecctionitem(discapacidad);
+        lista_sr.stream().forEach(lista->{
+            String id_sr = lista.getId_discapacidad();
+            vista.getTxtDiscapacidad().setText(id_sr);
+            
+        });
+        System.out.println(discapacidad);
+    }
+    
+    ///HORARIO
+    private void llenar_comoboboxHR(){
+        
+        JComboBox serlist;
+        serlist=vista.getCbxHorario();
+        serlist.removeAllItems();
+        List<Horario>listaser= modelo.comboboxHora();
+//        Holder<Integer>  i = new Holder<>(1);
+        listaser.stream().forEach(lista->{
+            String horario = lista.getHorario();
+            serlist.addItem(horario);
+//            serlist.addItem(i.value+"."+nom_servicios);
+//        i.value++;
+            
+        });
+    }
+    
+    private void seleccion_comboHr(){
+        String horario = (String) vista.getCbxHorario().getSelectedItem();
+        
+        List<Horario>lista_sr= modelo.selecctionHora(horario);
+        lista_sr.stream().forEach(lista->{
+            String id_sr = lista.getId_horario();
+            vista.getTxtHorario().setText(id_sr);
+        });
+        System.out.println(horario);
+    }
+    
     private void abrirDialogo(int ce){
         String title;
         vista.getTxtCedula().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");
         if (ce==1){
-            title = "Crear nueva Persona";
+            title = "Crear nuevo Empleado";
             vista.getDlgEmpleado().setName("Crear");
         }
         else{
-            title = "Editar Persona";
+            title = "Editar Empleado";
             vista.getDlgEmpleado().setName("Editar");
         }
         vista.getDlgEmpleado().setLocationRelativeTo(vista);
@@ -71,6 +144,59 @@ public class Control_Empleado {
         vista.getDlgEmpleado().setTitle(title);
         vista.getDlgEmpleado().setVisible(true);
         
+        
+        
+    }
+     private void crear_editar_Empleado(){
+        
+        if(vista.getDlgEmpleado().getName()=="Crear"){
+            //INSERTAR
+            String cedula=vista.getTxtCedula().getText();
+            String nombre=vista.getTxtNombre().getText();
+            String apellido=vista.getTxtApellido().getText();
+            
+//            Instant instant= vista.getDateCh_fechanac().getDate().toInstant();
+//            ZoneId zid= ZoneId.of("America/Guayaquil");
+//            ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);  
+//            java.sql.Date fecha = java.sql.Date.valueOf(zdt.toLocalDate());
+            double salario = Double.parseDouble(vista.getTxtSalario().getText());
+            String horario = vista.getTxtHorario().getText();
+            String discapacidad = vista.getTxtDiscapacidad().getText().toUpperCase();
+                      
+            
+            Modelo_Empleado emp = new Modelo_Empleado();
+            emp.setCedula(cedula);
+            emp.setNombre(nombre);
+            emp.setApellido(apellido);            
+            emp.setSalario(salario);
+            emp.setHorario(horario);
+            emp.setDiscapacidad(discapacidad);
+            
+            if(emp.crearEmpleado()){
+                JOptionPane.showMessageDialog(vista,"Empleado Creada Correctamente");
+            }else{
+            
+                 JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");
+        }
+        }else{ // EDITAR
+            
+            
+            String cedula=vista.getTxtCedula().getText();
+            String nombre=vista.getTxtNombre().getText();
+            String apellido=vista.getTxtApellido().getText();
+            
+            Modelo_Empleado persona = new Modelo_Empleado();
+            persona.setCedula(cedula);            
+            persona.setNombre(nombre);
+            persona.setApellido(apellido);
+            if(persona.editarEmpleado()){
+                JOptionPane.showMessageDialog(vista,"Persona Modificada Correctamente");
+            }else{
+            
+                 JOptionPane.showMessageDialog(vista,"No se pudo Modificar");
+            }
+            
+        }
         
         
     }

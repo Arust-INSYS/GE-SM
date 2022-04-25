@@ -56,5 +56,105 @@ public class Modelo_Empleado extends Empleado{
             return null;
         }
     }
+    public boolean crearEmpleado(){
+        String sql;
+        sql = "INSERT INTO empleado (cedula, nombre, apellido, salario, horario, discapacidad)";
+        sql+="VALUES ('"+ getCedula()+"','"+ getNombre() +"','"+ getApellido()+"','"+ getSalario()+"','"+ getHorario()+"','"+ getDiscapacidad()+"')";
+        
+        return cpg.accion(sql);
+    }
+    
+    public boolean editarEmpleado(){
+         return false;
+        
+    }
+    
+    public List<Discapacidad> combobox(){ 
+        List<Discapacidad> lista = new ArrayList<Discapacidad>();
+        
+        try {
+            String sql = "select id_discapacidad from discapacidad";
+            ResultSet rs = cpg.colsulta(sql);
+            
+            while (rs.next()) {
+                Discapacidad dis = new Discapacidad();
+                dis.setId_discapacidad(rs.getString("id_discapacidad"));
+                
+                lista.add(dis);
+
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    } //en uso
+    
+    public List<Discapacidad> selecctionitem(String id_discp){
+         List<Discapacidad> lista = new ArrayList<Discapacidad>();
+        try {
+           
+            String sql = "SELECT id_discapacidad FROM discapacidad WHERE id_discapacidad='"+id_discp+"'";
+            
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Discapacidad dis = new Discapacidad();
+                dis.setId_discapacidad(rs.getString("id_discapacidad"));
+                
+                lista.add(dis);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public List<Horario> comboboxHora(){ 
+        List<Horario> lista = new ArrayList<Horario>();
+        
+        try {
+            String sql = "select tiempo_trabajo from horario";
+            ResultSet rs = cpg.colsulta(sql);
+            
+            while (rs.next()) {
+                Horario hor = new Horario();
+                hor.setHorario(rs.getString("tiempo_trabajo"));
+                
+                lista.add(hor);
+
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    } //en uso
+    
+    public List<Horario> selecctionHora(String horario){
+         List<Horario> lista = new ArrayList<Horario>();
+        try {
+           
+            String sql = "SELECT id_horario FROM horario WHERE tiempo_trabajo='"+horario+"'";
+            
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Horario hr = new Horario();
+                hr.setId_horario(rs.getString("id_horario"));
+                
+                lista.add(hr);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

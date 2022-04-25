@@ -39,13 +39,16 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtSalario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cbxDiscaoacidad = new javax.swing.JComboBox<>();
+        cbxDiscapacidad = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         cbxHorario = new javax.swing.JComboBox<>();
         txtApellido = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        txtSalario = new javax.swing.JTextField();
+        txtHorario = new javax.swing.JTextField();
+        txtDiscapacidad = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_persona = new javax.swing.JTable();
@@ -63,23 +66,28 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Apellido:");
         dlgEmpleado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
-        dlgEmpleado.getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
 
         jLabel12.setText("Salario:");
         dlgEmpleado.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         jLabel13.setText("Discapacidad:");
-        dlgEmpleado.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+        dlgEmpleado.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
-        cbxDiscaoacidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        dlgEmpleado.getContentPane().add(cbxDiscaoacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+        cbxDiscapacidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item1" }));
+        dlgEmpleado.getContentPane().add(cbxDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 60, -1));
 
         jLabel14.setText("Horario:");
-        dlgEmpleado.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        dlgEmpleado.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         cbxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        dlgEmpleado.getContentPane().add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        dlgEmpleado.getContentPane().add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
         dlgEmpleado.getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, -1));
+
+        btnAceptar.setText("Aceptar");
+        dlgEmpleado.getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
+        dlgEmpleado.getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
+        dlgEmpleado.getContentPane().add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 40, -1));
+        dlgEmpleado.getContentPane().add(txtDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 50, -1));
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
@@ -123,12 +131,12 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.btnCrear = btnCrear;
     }
 
-    public JComboBox<String> getCbxDiscaoacidad() {
-        return cbxDiscaoacidad;
+    public JComboBox<String> getCbxDiscapacidad() {
+        return cbxDiscapacidad;
     }
 
-    public void setCbxDiscaoacidad(JComboBox<String> cbxDiscaoacidad) {
-        this.cbxDiscaoacidad = cbxDiscaoacidad;
+    public void setCbxDiscapacidad(JComboBox<String> CbxDiscapacidad) {
+        this.cbxDiscapacidad = CbxDiscapacidad;
     }
 
     public JComboBox<String> getCbxHorario() {
@@ -172,18 +180,43 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     }
 
     public JTextField getTxtSalario() {
-        return txtSalario;
+        return txtDiscapacidad;
     }
 
     public void setTxtSalario(JTextField txtSalario) {
-        this.txtSalario = txtSalario;
+        this.txtDiscapacidad = txtSalario;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JTextField getTxtDiscapacidad() {
+        return txtDiscapacidad;
+    }
+
+    public void setTxtDiscapacidad(JTextField txtDiscapacidad) {
+        this.txtDiscapacidad = txtDiscapacidad;
+    }
+
+    public JTextField getTxtHorario() {
+        return txtHorario;
+    }
+
+    public void setTxtHorario(JTextField txtHorario) {
+        this.txtHorario = txtHorario;
     }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JComboBox<String> cbxDiscaoacidad;
+    private javax.swing.JComboBox<String> cbxDiscapacidad;
     private javax.swing.JComboBox<String> cbxHorario;
     private javax.swing.JDialog dlgEmpleado;
     private javax.swing.JLabel jLabel11;
@@ -197,6 +230,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtbl_persona;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtDiscapacidad;
+    private javax.swing.JTextField txtHorario;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
