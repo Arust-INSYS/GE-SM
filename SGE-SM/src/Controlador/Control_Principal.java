@@ -22,10 +22,10 @@ public class Control_Principal {
         vista_menu.setLocationRelativeTo(null);
     }
     public void inicioControl(){
-        vista_menu.getBtnPersona().addActionListener(l->Crud_Personas());
+        vista_menu.getBtnPersona().addActionListener(l->Crud_Empleado());
     }
     
-    private void Crud_Personas(){
+    private void Crud_Empleado(){
         Modelo_Empleado modelo= new  Modelo_Empleado();
         Vista_Empleado vista = new Vista_Empleado();
         vista_menu.getDkp_principal().add(vista);
