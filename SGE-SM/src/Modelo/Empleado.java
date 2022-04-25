@@ -9,26 +9,26 @@ package Modelo;
  *
  * @author Arust
  */
-public class Persona {
-    private int id_persona;
+public class Empleado {
+    private int id_empleado;
     private String nombre;
     private String apellido;
 
-    public Persona() {
+    public Empleado() {
     }
 
-    public Persona(int id_persona, String nombre, String apellido) {
-        this.id_persona = id_persona;
+    public Empleado(int id_persona, String nombre, String apellido) {
+        this.id_empleado = id_empleado;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public int getId_persona() {
-        return id_persona;
+    public int getId_empleado() {
+        return id_empleado;
     }
 
-    public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
     }
 
     public String getNombre() {

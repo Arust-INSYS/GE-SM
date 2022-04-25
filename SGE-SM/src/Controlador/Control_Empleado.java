@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import Modelo.Modelo_Persona;
-import Modelo.Persona;
+import Modelo.Modelo_Empleado;
+import Modelo.Empleado;
 import Vista.Vista_Empleado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -15,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Arust
  */
-public class Control_Persona {
-    private Modelo_Persona modelo;
+public class Control_Empleado {
+    private Modelo_Empleado modelo;
     private Vista_Empleado vista;
     DefaultTableModel modelo_tabla;
     
 
-    public Control_Persona(Modelo_Persona modelo, Vista_Empleado vista) {
+    public Control_Empleado(Modelo_Empleado modelo, Vista_Empleado vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
@@ -36,9 +36,9 @@ public class Control_Persona {
         DefaultTableModel tblModel;
         tblModel = (DefaultTableModel) vista.getJtbl_persona().getModel();
         tblModel.setNumRows(0);
-        List<Persona>listap= modelo.cargar_datosPersona();
+        List<Empleado>listap= modelo.cargar_datosEmpleado();
         listap.stream().forEach(pe->{
-            String id = Integer.toString(pe.getId_persona());
+            String id = Integer.toString(pe.getId_empleado());
             String[] filap={
                 id,pe.getNombre(), pe.getApellido()
                 

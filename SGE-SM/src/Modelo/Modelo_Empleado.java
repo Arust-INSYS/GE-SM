@@ -17,28 +17,28 @@ import java.util.logging.Logger;
  *
  * @author Arust
  */
-public class Modelo_Persona extends Persona{
+public class Modelo_Empleado extends Empleado{
     
      ConexionPG cpg = new ConexionPG();
 
-    public Modelo_Persona() {
+    public Modelo_Empleado() {
     }
 
-    public Modelo_Persona(int id_persona, String nombre, String apellido) {
+    public Modelo_Empleado(int id_persona, String nombre, String apellido) {
         super(id_persona, nombre, apellido);
     }
 
     
 
-    public List<Persona> cargar_datosPersona() {
-        List<Persona> lista = new ArrayList<Persona>();
+    public List<Empleado> cargar_datosEmpleado() {
+        List<Empleado> lista = new ArrayList<Empleado>();
         try {
-            String sql = "select * from persona";
+            String sql = "select * from empleado";
             ResultSet rs = cpg.colsulta(sql);
             
             while (rs.next()) {
-                Persona pr = new Persona();
-                pr.setId_persona(rs.getInt("id_persona"));
+                Empleado pr = new Empleado();
+                pr.setId_empleado(rs.getInt("id_empleado"));
                 pr.setNombre(rs.getString("nombre"));
                 pr.setApellido(rs.getString("apellido"));
                 lista.add(pr);
@@ -47,7 +47,7 @@ public class Modelo_Persona extends Persona{
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

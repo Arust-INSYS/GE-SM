@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Modelo_Persona;
+import Modelo.Modelo_Empleado;
 import Vista.Vista_Empleado;
 import Vista.Vista_Principal;
 
@@ -26,10 +26,10 @@ public class Control_Principal {
     }
     
     private void Crud_Personas(){
-        Modelo_Persona modelo= new  Modelo_Persona();
+        Modelo_Empleado modelo= new  Modelo_Empleado();
         Vista_Empleado vista = new Vista_Empleado();
         vista_menu.getDkp_principal().add(vista);
-        Control_Persona control = new Control_Persona(modelo, vista);
+        Control_Empleado control = new Control_Empleado(modelo, vista);
         control.incioControl();
     }
 }
