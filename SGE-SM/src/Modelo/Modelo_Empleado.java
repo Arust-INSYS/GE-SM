@@ -24,9 +24,11 @@ public class Modelo_Empleado extends Empleado{
     public Modelo_Empleado() {
     }
 
-    public Modelo_Empleado(int id_persona, String nombre, String apellido) {
-        super(id_persona, nombre, apellido);
+    public Modelo_Empleado(int id_empleado, String cedula, String nombre, String apellido, java.sql.Date fecha_contrato, double salario, String discapacidad, String horario) {
+        super(id_empleado, cedula, nombre, apellido, fecha_contrato, salario, discapacidad, horario);
     }
+
+    
 
     
 
@@ -39,8 +41,11 @@ public class Modelo_Empleado extends Empleado{
             while (rs.next()) {
                 Empleado pr = new Empleado();
                 pr.setId_empleado(rs.getInt("id_empleado"));
+                pr.setCedula(rs.getString("cedula"));
                 pr.setNombre(rs.getString("nombre"));
                 pr.setApellido(rs.getString("apellido"));
+                pr.setFecha_contrato(rs.getDate("fecha_contrato"));
+                pr.setSalario(rs.getDouble("salario"));
                 lista.add(pr);
 
             }

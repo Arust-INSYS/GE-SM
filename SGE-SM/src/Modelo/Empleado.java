@@ -5,23 +5,40 @@
  */
 package Modelo;
 
+import java.sql.Date;
+
+
+
 /**
  *
  * @author Arust
  */
 public class Empleado {
     private int id_empleado;
+    private String cedula;
     private String nombre;
     private String apellido;
+    private Date fecha_contrato;
+    private double salario;
+    private String discapacidad;
+    private String horario;
+    
 
     public Empleado() {
     }
 
-    public Empleado(int id_persona, String nombre, String apellido) {
+    public Empleado(int id_empleado, String cedula, String nombre, String apellido, Date fecha_contrato, double salario, String discapacidad, String horario) {
         this.id_empleado = id_empleado;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.fecha_contrato = fecha_contrato;
+        this.salario = salario;
+        this.discapacidad = discapacidad;
+        this.horario = horario;
     }
+
+    
 
     public int getId_empleado() {
         return id_empleado;
@@ -45,6 +62,46 @@ public class Empleado {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public Date getFecha_contrato() {
+        return fecha_contrato;
+    }
+
+    public void setFecha_contrato(Date fecha_contrato) {
+        this.fecha_contrato = fecha_contrato;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getDiscapacidad() {
+        return discapacidad;
+    }
+
+    public void setDiscapacidad(String discapacidad) {
+        this.discapacidad = discapacidad;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
     
     

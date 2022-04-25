@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.Modelo_Empleado;
 import Modelo.Empleado;
 import Vista.Vista_Empleado;
+import java.sql.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,14 +37,18 @@ public class Control_Empleado {
         DefaultTableModel tblModel;
         tblModel = (DefaultTableModel) vista.getJtbl_persona().getModel();
         tblModel.setNumRows(0);
+        
         List<Empleado>listap= modelo.cargar_datosEmpleado();
         listap.stream().forEach(pe->{
             String id = Integer.toString(pe.getId_empleado());
+            String contrato= pe.getFecha_contrato().toString();
+            String salario = Double.toString(pe.getSalario());
             String[] filap={
-                id,pe.getNombre(), pe.getApellido()
+                id,pe.getCedula(),pe.getNombre(), pe.getApellido(),contrato,salario
                 
             };
                 tblModel.addRow(filap);
         });
+        
     }
 }

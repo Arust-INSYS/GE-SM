@@ -42,7 +42,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Program.Version.1.1");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 425, 776, 50));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 900, 50));
 
         jToolBar1.setRollover(true);
 
@@ -52,20 +52,20 @@ public class Vista_Principal extends javax.swing.JFrame {
         btnPersona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnPersona);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 776, 25));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 25));
 
         javax.swing.GroupLayout dkp_principalLayout = new javax.swing.GroupLayout(dkp_principal);
         dkp_principal.setLayout(dkp_principalLayout);
         dkp_principalLayout.setHorizontalGroup(
             dkp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 776, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         dkp_principalLayout.setVerticalGroup(
             dkp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 410, Short.MAX_VALUE)
         );
 
-        getContentPane().add(dkp_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 776, 410));
+        getContentPane().add(dkp_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 900, 410));
 
         jMenu1.setText("Persona");
         jMenuBar1.add(jMenu1);
