@@ -81,7 +81,10 @@ public class Modelo_Empleado extends Empleado{
     } //en uso
     
     public boolean editarEmpleado(){
-         return false;
+         String sql;
+        
+        sql = "UPDATE empleado SET cedula='"+getCedula()+"',nombre='"+getNombre()+"',apellido='"+getApellido()+"' WHERE idpersona='"+getId_empleado()+"'";//apellidos,
+        return cpg.accion(sql);
         
     }
     public boolean eliminar(int id){
