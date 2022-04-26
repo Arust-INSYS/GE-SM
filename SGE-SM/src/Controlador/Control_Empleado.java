@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -48,7 +49,8 @@ public class Control_Empleado {
         vista.getCbxDiscapacidad().addActionListener(l->seleccion_combo());
         vista.getCbxHorario().addActionListener(l->seleccion_comboHr());
         vista.getBtnEliminar().addActionListener(l->delete());
-        keylist_Empleado();    
+        keylist_Empleado();   
+        vista.getBtnCancelar().addActionListener(l->cancelar());
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -242,15 +244,21 @@ public class Control_Empleado {
                 JOptionPane.showMessageDialog(vista,"Persona Modificada Correctamente");
                 
                 borrar_campos();
+                vista.getDlgEmpleado().dispose();
+                cargar_datos();
             }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo Modificar");
             }
-            cargar_datos();
+            
         }
         
         
     }
+     public void cancelar(){
+         vista.getDlgEmpleado().dispose();
+         borrar_campos();
+     }
       public void delete(){
         DefaultTableModel tablamodel;
         tablamodel = (DefaultTableModel) vista.getJtbl_persona().getModel();

@@ -49,6 +49,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         txtSalario = new javax.swing.JTextField();
         txtHorario = new javax.swing.JTextField();
         txtDiscapacidad = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_persona = new javax.swing.JTable();
@@ -57,6 +58,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         txt_buscarEmp = new javax.swing.JTextField();
 
+        dlgEmpleado.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         dlgEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Cédula:");
@@ -91,6 +93,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         dlgEmpleado.getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
         dlgEmpleado.getContentPane().add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 30, -1));
         dlgEmpleado.getContentPane().add(txtDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 40, -1));
+
+        btnCancelar.setText("Cancelar");
+        dlgEmpleado.getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
@@ -246,11 +251,20 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setTxt_buscarEmp(JTextField txt_buscarEmp) {
         this.txt_buscarEmp = txt_buscarEmp;
     }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
