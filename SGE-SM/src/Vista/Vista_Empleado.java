@@ -59,6 +59,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         txt_buscarEmp = new javax.swing.JTextField();
 
         dlgEmpleado.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        dlgEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dlgEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Cédula:");
