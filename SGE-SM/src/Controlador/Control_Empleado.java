@@ -219,7 +219,9 @@ public class Control_Empleado {
             
             
                 
-            
+            int id = Integer.parseInt(id_empleado);
+            System.out.println("muestra id");
+            System.out.println(id);
             String cedula=vista.getTxtCedula().getText();
             String nombre=vista.getTxtNombre().getText();
             String apellido=vista.getTxtApellido().getText();
@@ -228,6 +230,7 @@ public class Control_Empleado {
             String discapacidad = vista.getTxtDiscapacidad().getText();
             
             Modelo_Empleado persona = new Modelo_Empleado();
+            persona.setId_empleado(id);
             persona.setCedula(cedula);            
             persona.setNombre(nombre);
             persona.setApellido(apellido);
@@ -326,15 +329,15 @@ public class Control_Empleado {
                 tblModel.addRow(filap);
         });
     }
-      
+      String id_empleado;
       private boolean seleccion_empleado(){
         
         int fila=vista.getJtbl_persona().getSelectedRow();
         if(fila>=0){
             try {
                 DefaultTableModel dm=(DefaultTableModel) vista.getJtbl_persona().getModel();
-//                String cedula =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
-//                        , 0));
+                String id =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 0));
                 String cedula =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
                         , 1));
                 String nombre =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
@@ -347,6 +350,7 @@ public class Control_Empleado {
                         , 6));
                 String discapacidad =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
                         , 7));
+                id_empleado=id;
                 vista.getTxtCedula().setText(cedula);
                 vista.getTxtNombre().setText(nombre);
                 vista.getTxtApellido().setText(apellido);
