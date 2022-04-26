@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -38,6 +39,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        mitmRpsEmpleado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +83,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Reportes");
+
+        mitmRpsEmpleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mitmRpsEmpleado.setText("Reportes Empleado");
+        jMenu2.add(mitmRpsEmpleado);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -127,6 +134,14 @@ public class Vista_Principal extends javax.swing.JFrame {
     public void setDkp_principal(JDesktopPane dkp_principal) {
         this.dkp_principal = dkp_principal;
     }
+
+    public JMenuItem getMitmRpsEmpleado() {
+        return mitmRpsEmpleado;
+    }
+
+    public void setMitmRpsEmpleado(JMenuItem mitmRpsEmpleado) {
+        this.mitmRpsEmpleado = mitmRpsEmpleado;
+    }
     
     
     
@@ -140,5 +155,6 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem mitmRpsEmpleado;
     // End of variables declaration//GEN-END:variables
 }

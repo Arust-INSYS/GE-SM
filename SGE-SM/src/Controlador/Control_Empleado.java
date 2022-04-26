@@ -5,26 +5,17 @@
  */
 package Controlador;
 
+import Modelo.ConexionPG;
 import Modelo.Discapacidad;
 import Modelo.Modelo_Empleado;
 import Modelo.Empleado;
 import Modelo.Horario;
 import Vista.Vista_Empleado;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.sql.Date;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -54,6 +45,8 @@ public class Control_Empleado {
         vista.getCbxDiscapacidad().addActionListener(l->seleccion_combo());
         vista.getCbxHorario().addActionListener(l->seleccion_comboHr());
         vista.getBtnEliminar().addActionListener(l->delete());
+        
+        
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -245,4 +238,5 @@ public class Control_Empleado {
         }
         
     }
+      
 }
