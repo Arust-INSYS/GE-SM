@@ -160,24 +160,15 @@ public class Control_Empleado {
             String nombre=vista.getTxtNombre().getText();
             String apellido=vista.getTxtApellido().getText();
             System.out.println("Holaaa");
-            double salario=0;
-            try {
-            salario = DecimalFormat.getNumberInstance().parse(vista.getTxtSalario().getText()).doubleValue();
-            System.out.println(salario);
-            
-            
-        } catch (ParseException e) {
-            
-        }
-//            double salario = Double.parseDouble(vista.getTxtSalario().getText());
-            System.out.println("Pase");
+
+            Double salario=Double.parseDouble(vista.getTxtSalario().getText());
 //            Instant instant= vista.getDateCh_fechanac().getDate().toInstant();
 //            ZoneId zid= ZoneId.of("America/Guayaquil");
 //            ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);  
 //            java.sql.Date fecha = java.sql.Date.valueOf(zdt.toLocalDate());
-            System.out.println("Holaaa");
+
              
-             System.out.println(salario);
+//             System.out.println(salario);
             String horario = vista.getTxtHorario().getText();
             String discapacidad = vista.getTxtDiscapacidad().getText();
                       
@@ -197,16 +188,20 @@ public class Control_Empleado {
                     horario.equals("")||discapacidad.equals("")){
                 JOptionPane.showMessageDialog(vista,"Faltan campos, verifique");
             }else{
-                if(salario==0||salario<450){
-                    JOptionPane.showMessageDialog(vista,"Salario no puede ser cero o menor de 450, verifique");
-                }else{
-                    if(emp.crearEmpleado()){
+                
+                    if(salario<=0||salario<450){
+                        JOptionPane.showMessageDialog(vista,"Salario no permite valores menor o igual"
+                                + "a cero, ingrese un USD de 450 en adelante, verifique");
+                    }else{
+                        if(emp.crearEmpleado()){
                 JOptionPane.showMessageDialog(vista,"Empleado Creado Correctamente");
-            }else{
+                }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");
                  }
-                }
+                    }       
+                    
+                
             }
             
         }else{ // EDITAR

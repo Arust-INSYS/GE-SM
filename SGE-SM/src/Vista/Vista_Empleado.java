@@ -180,11 +180,11 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     }
 
     public JTextField getTxtSalario() {
-        return txtDiscapacidad;
+        return txtSalario;
     }
 
     public void setTxtSalario(JTextField txtSalario) {
-        this.txtDiscapacidad = txtSalario;
+        this.txtSalario = txtSalario;
     }
 
     public JButton getBtnAceptar() {
