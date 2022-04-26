@@ -55,6 +55,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btnCrear = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        txt_buscarEmp = new javax.swing.JTextField();
 
         dlgEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,14 +83,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         dlgEmpleado.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         cbxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        dlgEmpleado.getContentPane().add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+        dlgEmpleado.getContentPane().add(cbxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 80, -1));
         dlgEmpleado.getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, -1));
 
         btnAceptar.setText("Aceptar");
         dlgEmpleado.getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
         dlgEmpleado.getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 90, -1));
-        dlgEmpleado.getContentPane().add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 40, -1));
-        dlgEmpleado.getContentPane().add(txtDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 50, -1));
+        dlgEmpleado.getContentPane().add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 30, -1));
+        dlgEmpleado.getContentPane().add(txtDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 40, -1));
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setClosable(true);
@@ -102,14 +103,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id_Empleado", "Cedula", "Nombre", "Apellido", "Fecha_Contrato", "Salario"
+                "Id_Empleado", "Cedula", "Nombre", "Apellido", "Fecha_Contrato", "Salario", "Horario", "Discapacidad"
             }
         ));
         jScrollPane1.setViewportView(jtbl_persona);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 620, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 770, 320));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 800, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 390));
 
         btnCrear.setText("Crear");
         getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
@@ -119,6 +120,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         btnEliminar.setText("Remover");
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
+        getContentPane().add(txt_buscarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 240, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,6 +236,16 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setBtnEliminar(JButton btnEliminar) {
         this.btnEliminar = btnEliminar;
     }
+   
+    
+
+    public JTextField getTxt_buscarEmp() {
+        return txt_buscarEmp;
+    }
+
+    public void setTxt_buscarEmp(JTextField txt_buscarEmp) {
+        this.txt_buscarEmp = txt_buscarEmp;
+    }
     
     
 
@@ -260,5 +272,6 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtHorario;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txt_buscarEmp;
     // End of variables declaration//GEN-END:variables
 }

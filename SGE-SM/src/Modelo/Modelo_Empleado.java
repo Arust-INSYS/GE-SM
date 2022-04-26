@@ -49,8 +49,41 @@ public class Modelo_Empleado extends Empleado{
                 pr.setApellido(rs.getString("apellido"));
                 pr.setFecha_contrato(rs.getDate("fecha_contrato"));
                 pr.setSalario(rs.getDouble("salario"));
+                pr.setHorario(rs.getString("horario"));
+                pr.setDiscapacidad(rs.getString("discapacidad"));
                 lista.add(pr);
 
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    public List<Empleado> buscarEmpleados(String texto){
+        List<Empleado> lista = new ArrayList<Empleado>();
+        ResultSet rs;
+        String sql="";
+        try {
+           
+               sql = "SELECT* FROM empleado WHERE UPPER(nombre) LIKE '"+texto+"%' OR "
+                       + " UPPER(apellido) LIKE '"+texto+"%'";
+           
+            
+             rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Empleado em = new Empleado();
+//                ser.setId_servicio(rs.getInt("id_servicio"));
+                  em.setId_empleado(rs.getInt("id_empleado"));
+                  em.setCedula(rs.getString("cedula"));
+                  em.setNombre(rs.getString("nombre"));
+                  em.setApellido(rs.getString("apellido"));
+                  em.setFecha_contrato(rs.getDate("fecha_contrato"));
+                  em.setSalario(rs.getDouble("salario"));                  
+                  em.setHorario(rs.getString("horario"));
+                  em.setDiscapacidad(rs.getString("discapacidad"));
+                lista.add(em);
             }
             rs.close();
             return lista;
@@ -80,12 +113,27 @@ public class Modelo_Empleado extends Empleado{
         }
     } //en uso
     
-    public boolean editarEmpleado(){
-         String sql;
-        
-        sql = "UPDATE empleado SET cedula='"+getCedula()+"',nombre='"+getNombre()+"',apellido='"+getApellido()+"' WHERE idpersona='"+getId_empleado()+"'";//apellidos,
-        return cpg.accion(sql);
-        
+
+     public boolean editarEmpleado(){
+        try {
+            String sql="";
+            sql = "UPDATE empleado SET cedula=?,nombre=?,apellido=?,salario=?,horario=?,discapacidad=? WHERE id_empleado=?";
+            PreparedStatement ps = (PreparedStatement) cpg.getCon().prepareStatement(sql);
+            
+          ps.setString(1, getCedula());          
+          ps.setString(2, getNombre());
+          ps.setString(3, getApellido());
+          ps.setDouble(4,getSalario());
+          ps.setString(5, getHorario());
+          ps.setString(6, getDiscapacidad());
+          ps.setInt(7, getId_empleado());
+          ps.executeUpdate();
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     public boolean eliminar(int id){
         String sql; 

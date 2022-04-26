@@ -64,4 +64,5 @@ public class Control_Principal {
             Logger.getLogger(Control_Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }

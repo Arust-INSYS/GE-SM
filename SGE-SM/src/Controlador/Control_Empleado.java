@@ -11,6 +11,8 @@ import Modelo.Modelo_Empleado;
 import Modelo.Empleado;
 import Modelo.Horario;
 import Vista.Vista_Empleado;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -38,6 +40,7 @@ public class Control_Empleado {
     public void incioControl(){
         cargar_datos();
         vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
+        vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
         //Dialogo empleado
         llenar_comobobox();
         llenar_comoboboxHR();
@@ -45,8 +48,7 @@ public class Control_Empleado {
         vista.getCbxDiscapacidad().addActionListener(l->seleccion_combo());
         vista.getCbxHorario().addActionListener(l->seleccion_comboHr());
         vista.getBtnEliminar().addActionListener(l->delete());
-        
-        
+        keylist_Empleado();    
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -59,7 +61,8 @@ public class Control_Empleado {
             String contrato= pe.getFecha_contrato().toString();
             String salario = Double.toString(pe.getSalario());
             String[] filap={
-                id,pe.getCedula(),pe.getNombre(), pe.getApellido(),contrato,salario
+                id,pe.getCedula(),pe.getNombre(), pe.getApellido(),contrato,salario,
+                pe.getHorario(),pe.getDiscapacidad()
                 
             };
                 tblModel.addRow(filap);
@@ -124,27 +127,41 @@ public class Control_Empleado {
         });
         System.out.println(horario);
     }
-    
-    private void abrirDialogo(int ce){
-        String title;
+    private void borrar_campos(){
         vista.getTxtCedula().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");
+        vista.getTxtSalario().setText("");
+        vista.getTxtHorario().setText("");
+        vista.getTxtDiscapacidad().setText("");
+        
+    }
+    private void abrirDialogo(int ce){
+        String title;
+        
         if (ce==1){
             title = "Crear nuevo Empleado";
             vista.getDlgEmpleado().setName("Crear");
+            atributos_dialogo(title);
         }
         else{
+            title="";
+            if(seleccion_empleado()){
             title = "Editar Empleado";
             vista.getDlgEmpleado().setName("Editar");
+            atributos_dialogo(title);
+            }
         }
+        
+        
+        
+        
+    }
+    private void atributos_dialogo(String texto){
         vista.getDlgEmpleado().setLocationRelativeTo(vista);
         vista.getDlgEmpleado().setSize(600, 350);
-        vista.getDlgEmpleado().setTitle(title);
+        vista.getDlgEmpleado().setTitle(texto);
         vista.getDlgEmpleado().setVisible(true);
-        
-        
-        
     }
      private void crear_editar_Empleado(){
         
@@ -186,12 +203,14 @@ public class Control_Empleado {
                     }else{
                         if(emp.crearEmpleado()){
                 JOptionPane.showMessageDialog(vista,"Empleado Creado Correctamente");
+                cargar_datos();
+                borrar_campos();
                 }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");
                  }
                     }
-            cargar_datos();
+            
                     
                 
             }
@@ -199,21 +218,32 @@ public class Control_Empleado {
         }else{ // EDITAR
             
             
+                
+            
             String cedula=vista.getTxtCedula().getText();
             String nombre=vista.getTxtNombre().getText();
             String apellido=vista.getTxtApellido().getText();
+            Double salario=Double.parseDouble(vista.getTxtSalario().getText());
+            String horario=vista.getTxtHorario().getText();
+            String discapacidad = vista.getTxtDiscapacidad().getText();
             
             Modelo_Empleado persona = new Modelo_Empleado();
             persona.setCedula(cedula);            
             persona.setNombre(nombre);
             persona.setApellido(apellido);
+            persona.setSalario(salario);
+            persona.setHorario(horario);
+            persona.setDiscapacidad(discapacidad);
+            
             if(persona.editarEmpleado()){
                 JOptionPane.showMessageDialog(vista,"Persona Modificada Correctamente");
+                
+                borrar_campos();
             }else{
             
                  JOptionPane.showMessageDialog(vista,"No se pudo Modificar");
             }
-            
+            cargar_datos();
         }
         
         
@@ -238,5 +268,103 @@ public class Control_Empleado {
         }
         
     }
+       private void keylist_Empleado() {
+        KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String busqueda = vista.getTxt_buscarEmp().getText().toUpperCase();
+                
+                buscar_empleado(busqueda);
+            }
+        };
+
+
+        vista.getTxt_buscarEmp().addKeyListener(buscar);
+    }
+    
+      public void buscar_empleado(String texto){
+        DefaultTableModel tblModel;
+        tblModel = (DefaultTableModel) vista.getJtbl_persona().getModel();
+        tblModel.setNumRows(0);
+        List<Empleado>listapedi= modelo.buscarEmpleados(texto);
+        listapedi.stream().forEach(pe->{
+            
+            String id = Integer.toString(pe.getId_empleado());
+            String contrato= pe.getFecha_contrato().toString();
+            String salario = Double.toString(pe.getSalario());
+                     
+                String[] filap={
+                id,pe.getCedula(),pe.getNombre(), pe.getApellido(),contrato,salario,
+                pe.getHorario(),pe.getDiscapacidad()
+                
+            };
+                tblModel.addRow(filap);
+        });
+    }
+      public void lista_empleados(){
+        DefaultTableModel tblModel;
+        tblModel = (DefaultTableModel) vista.getJtbl_persona().getModel();
+        tblModel.setNumRows(0);
+        List<Empleado>listapedi= modelo.cargar_datosEmpleado();
+        listapedi.stream().forEach(cl->{
+            
+            
+            
+                     
+                String[] filap={
+                cl.getCedula(),cl.getNombre(),cl.getApellido()
+                
+            };
+                tblModel.addRow(filap);
+        });
+    }
+      
+      private boolean seleccion_empleado(){
+        
+        int fila=vista.getJtbl_persona().getSelectedRow();
+        if(fila>=0){
+            try {
+                DefaultTableModel dm=(DefaultTableModel) vista.getJtbl_persona().getModel();
+//                String cedula =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+//                        , 0));
+                String cedula =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 1));
+                String nombre =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 2));
+                String apellido =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 3));
+                String salario =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 5));
+                String horario =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 6));
+                String discapacidad =String.valueOf(dm.getValueAt(vista.getJtbl_persona().getSelectedRow()
+                        , 7));
+                vista.getTxtCedula().setText(cedula);
+                vista.getTxtNombre().setText(nombre);
+                vista.getTxtApellido().setText(apellido);
+                vista.getTxtSalario().setText(salario);
+                vista.getTxtHorario().setText(horario);
+                vista.getTxtDiscapacidad().setText(discapacidad);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccionar Fila");
+            return false;
+        }
+        
+    }
+    
+           
+    
       
 }
