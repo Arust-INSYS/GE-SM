@@ -84,6 +84,13 @@ public class Modelo_Empleado extends Empleado{
          return false;
         
     }
+    public boolean eliminar(int id){
+        String sql; 
+        sql="DELETE FROM empleado WHERE id_empleado='"+id+"'";
+                
+        
+     return cpg.accion(sql);
+     }
     
     public List<Discapacidad> comboboxD(){ 
         List<Discapacidad> lista = new ArrayList<Discapacidad>();

@@ -53,6 +53,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbl_persona = new javax.swing.JTable();
         btnCrear = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         dlgEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -111,6 +113,12 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         btnCrear.setText("Crear");
         getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
+        btnEditar.setText("Editar");
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+
+        btnEliminar.setText("Remover");
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,12 +218,30 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setTxtHorario(JTextField txtHorario) {
         this.txtHorario = txtHorario;
     }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cbxDiscapacidad;
     private javax.swing.JComboBox<String> cbxHorario;
     private javax.swing.JDialog dlgEmpleado;

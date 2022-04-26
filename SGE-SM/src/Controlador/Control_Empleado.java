@@ -53,6 +53,7 @@ public class Control_Empleado {
         vista.getBtnAceptar().addActionListener(l->crear_editar_Empleado());
         vista.getCbxDiscapacidad().addActionListener(l->seleccion_combo());
         vista.getCbxHorario().addActionListener(l->seleccion_comboHr());
+        vista.getBtnEliminar().addActionListener(l->delete());
     }
     public void cargar_datos(){
         DefaultTableModel tblModel;
@@ -178,10 +179,7 @@ public class Control_Empleado {
             emp.setNombre(nombre);
             emp.setApellido(apellido);            
             emp.setSalario(salario);
-            emp.setHorario(horario);
-                      
-            System.out.println("Carga");
-            
+            emp.setHorario(horario);              
             emp.setDiscapacidad(discapacidad);
             System.out.println("Si cargó");
             if(cedula.equals("")||nombre.equals("")||apellido.equals("")||
@@ -199,7 +197,8 @@ public class Control_Empleado {
             
                  JOptionPane.showMessageDialog(vista,"No se pudo crear al Empleado");
                  }
-                    }       
+                    }
+            cargar_datos();
                     
                 
             }
@@ -224,6 +223,26 @@ public class Control_Empleado {
             
         }
         
+        
+    }
+      public void delete(){
+        DefaultTableModel tablamodel;
+        tablamodel = (DefaultTableModel) vista.getJtbl_persona().getModel();
+        List<Empleado> per = modelo.cargar_datosEmpleado();
+        int elima = vista.getJtbl_persona().getSelectedRow();
+        if (elima >= 0) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar  ? \n     " + per.get(elima).getNombre(), "Eliminar", JOptionPane.YES_NO_OPTION);
+
+            if (pregunta == 0) {
+                tablamodel.removeRow(elima);
+                
+                modelo.eliminar(per.get(elima).getId_empleado());
+//                cargar_datos();
+            } 
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione en la tabla el dato a Eliminar");
+        }
         
     }
 }

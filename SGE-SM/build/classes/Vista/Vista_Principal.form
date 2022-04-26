@@ -11,7 +11,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
         </Menu>
       </SubComponents>
@@ -76,7 +76,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnPersona">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Persona"/>
+            <Property name="text" type="java.lang.String" value="Empleado"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

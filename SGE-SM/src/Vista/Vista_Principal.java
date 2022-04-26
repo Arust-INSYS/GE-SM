@@ -43,7 +43,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnPersona.setText("Persona");
+        btnPersona.setText("Empleado");
         btnPersona.setFocusable(false);
         btnPersona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPersona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -80,7 +80,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jMenu1.setText("Persona");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Reportes");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
